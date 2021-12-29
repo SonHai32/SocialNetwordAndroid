@@ -1,0 +1,43 @@
+<resources>
+  <string name="app_name">Do An Mang Xa Hoi</string>
+  <string name="title_activity_login">LoginActivity</string>
+  <string name="prompt_email">Email</string>
+  <string name="prompt_password">Password</string>
+  <string name="action_sign_in">Sign in or register</string>
+  <string name="action_sign_in_short">Sign in</string>
+  <string name="welcome">"Welcome !"</string>
+  <string name="invalid_username">Not a valid username</string>
+  <string name="invalid_password">Password must be >5 characters</string>
+  <string name="login_failed">"Login failed"</string>
+  <string name="loading">…</string>
+
+  <!--  LOGIN-->
+  <string name="email">Email</string>
+  <string name="password">Password</string>
+  <string name="username">Username</string>
+  <string name="phoneNumber">Phone number</string>
+  <string name="login">Login</string>
+  <string name="register">Register</string>
+  <string name="Remember">Remember</string>
+  <string name="doNotHaveAccount">Don\'t have account ? Register</string>
+  <string name="haveAccount">Have an account ? Login</string>
+  <!--  LOGIN-->
+  <string name="WhatOnYourMind">What\'s on your mind?</string>
+
+
+  <!--  BottomNavigationBarMenuStringValue-->
+  <string name="NewFeeds">News Feed</string>
+  <string name="Message">Message</string>
+  <string name="Friends">Friends</string>
+  <string name="Notifications">Notifications</string>
+  <string name="Menu">Menu</string>
+  <!--  BottomNavigationBarMenuStringValue-->
+
+
+  <!--  PostCreate-->
+
+  <string name="Post">Post</string>
+  <!--  PostCreate-->
+
+
+</resources>

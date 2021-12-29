@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:elevation="2dp">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout"
+      android:layout_width="match_parent"
+      android:layout_height="80dp"
+      android:padding="10dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_user"
+        app:civ_border_color="@color/colorSecondary"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtPostUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/username"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPostTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/txtPostUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txtPostUsername" />
+
+    <ImageButton
+        android:id="@+id/btnPostMore"
+        android:background="@color/transparency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more"
+        tools:ignore="SpeakableTextPresentCheck" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:id="@+id/linearPostChipGroup"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="10dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupPostTags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:chipSpacingHorizontal="5dp"
+        app:chipSpacingVertical="5dp">
+
+<!--      <com.google.android.material.chip.Chip-->
+<!--          android:id="@+id/chipPost"-->
+<!--          android:layout_width="wrap_content"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:checkable="false"-->
+<!--          android:text="tag "-->
+<!--          android:textColor="@color/white"-->
+<!--          app:chipBackgroundColor="@color/colorTag"-->
+<!--          app:chipIcon="@drawable/ic_label_outline_white"-->
+<!--          app:closeIconEnabled="false" />-->
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/txtPostTextContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingVertical="2dp"
+        android:text="Text Content"
+        android:textColor="@color/colorText"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+    <ImageView
+        android:id="@+id/imgPostImageContent"
+        android:layout_width="match_parent"
+        android:layout_height="320dp" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        app:alignItems="center"
+        app:justifyContent="space_between">
+
+      <Button
+          android:textSize="10sp"
+          style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Yêu thích"
+          app:icon="@drawable/ic_love"
+          tools:ignore="SmallSp" />
+
+      <Button
+          android:textSize="10sp"
+          style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Bình luận"
+          app:icon="@drawable/ic_comment"
+          tools:ignore="SmallSp" />
+
+      <Button
+          android:textSize="10sp"
+          style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Chia sẻ"
+          app:icon="@drawable/ic_share" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

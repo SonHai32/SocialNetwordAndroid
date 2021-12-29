@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+      android:id="@+id/activityNewFeesNavItem"
+      android:enabled="true"
+      android:icon="@drawable/ic_home_outline"
+      android:title="@string/NewFeeds"/>
+  <item
+      android:id="@+id/activityMessageNavItem"
+      android:enabled="true"
+      android:icon="@drawable/ic_mail_outline"
+      android:title="@string/Message"/>
+  <item
+      android:id="@+id/activityFriendsNavItem"
+      android:enabled="true"
+      android:icon="@drawable/ic_people_outline"
+      android:title="@string/Friends"/>
+  <item
+      android:id="@+id/activityNotificationsNavItem"
+      android:enabled="true"
+      android:icon="@drawable/ic_notifications_outline"
+      android:title="@string/Notifications"/>
+  <item
+      android:id="@+id/activityMenuNavItem"
+      android:enabled="true"
+      android:icon="@drawable/ic_more"
+      android:title="@string/Menu"/>
+</menu>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".ui.CreatePostActivity">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout2"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:padding="5dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Post"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnCloseCreatePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparency"
+        android:src="@drawable/ic_close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout"
+      android:layout_width="match_parent"
+      android:layout_height="80dp"
+      android:padding="10dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_user"
+        app:civ_border_color="@color/colorSecondary"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtPostCreateUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/username"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPostTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Public"
+        app:layout_constraintStart_toStartOf="@+id/txtPostCreateUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txtPostCreateUsername" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:id="@+id/linearLayoutCompat"
+      android:focusable="true"
+      android:focusableInTouchMode="true"
+      android:layout_width="match_parent"
+      android:layout_height="200dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/txtPostCreatePostText"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="left"
+          android:hint="@string/WhatOnYourMind"
+          android:textColor="@color/colorText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+
+  <HorizontalScrollView
+      android:id="@+id/horizontalScrollView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        app:chipSpacingHorizontal="8dp"
+        app:singleLine="true">
+
+      <com.google.android.material.chip.Chip
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Photo"
+          android:textColor="@color/white"
+          app:checkedIconEnabled="false"
+          app:chipBackgroundColor="@color/colorPrimary"
+          app:chipEndPadding="10dp"
+          app:chipIcon="@drawable/ic_photo_outline_white"
+          app:chipStartPadding="10dp"
+          app:closeIconEnabled="false" />
+
+      <com.google.android.material.chip.Chip
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Hashtag"
+          android:textColor="@color/white"
+          app:checkedIconEnabled="false"
+          app:chipBackgroundColor="@color/colorPrimary"
+          app:chipIcon="@drawable/ic_new_label_outline_white"
+          app:closeIconEnabled="false" />
+    </com.google.android.material.chip.ChipGroup>
+
+  </HorizontalScrollView>
+
+  <com.google.android.material.button.MaterialButton
+      android:text="@string/Post"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

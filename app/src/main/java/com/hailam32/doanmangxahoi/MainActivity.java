@@ -1,43 +1,25 @@
 package com.hailam32.doanmangxahoi;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.hailam32.doanmangxahoi.adapter.PostListViewAdapter;
-import com.hailam32.doanmangxahoi.models.post.Post;
-import com.hailam32.doanmangxahoi.models.post.PostContent;
-import com.hailam32.doanmangxahoi.ui.CreatePostActivity;
+import com.hailam32.doanmangxahoi.ui.FriendsFragment;
 import com.hailam32.doanmangxahoi.ui.LoginActivity;
-import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
+import com.hailam32.doanmangxahoi.ui.MenuFragment;
+import com.hailam32.doanmangxahoi.ui.MessageFragment;
+import com.hailam32.doanmangxahoi.ui.NewsFeedFragment;
+import com.hailam32.doanmangxahoi.ui.NotificationFragment;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivity extends AppCompatActivity {
 
-  private ListView listViewPost;
-  private PostListViewAdapter postListViewAdapter;
-  private CircleImageView imgPostCreateBoxLabelAvatar;
-  private TextView tvOpenCreatePost;
-  ArrayList<Post> postArrayList = new ArrayList<Post>();
+  private ChipNavigationBar bottomNavigation;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     initUI();
     intEvent();
-    postListListener();
   }
 
   private void navigateToLoginActivity() {
@@ -70,53 +51,39 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void initUI() {
-    listViewPost = (ListView) findViewById(R.id.listViewPost);
-    tvOpenCreatePost = (TextView) findViewById(R.id.tvOpenCreatePost);
-    postListViewAdapter = new PostListViewAdapter(MainActivity.this, R.layout.post_layout, this.postArrayList);
-    listViewPost.setAdapter(postListViewAdapter);
-    imgPostCreateBoxLabelAvatar = (CircleImageView) findViewById(R.id.imgPostCreateLabelAvatar);
+    bottomNavigation = (ChipNavigationBar) findViewById(R.id.bottomNavigation);
+    getSupportFragmentManager().beginTransaction().replace(R.id.mainContainer, new NewsFeedFragment()).commit();
+    bottomNavigation.setItemSelected(R.id.fragmentNewFeesNavItem, true);
   }
 
-  private void intEvent(){
-    tvOpenCreatePost.setOnClickListener(new View.OnClickListener() {
+  private void intEvent() {
+    bottomNavigation.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+      @SuppressLint("NonConstantResourceId")
       @Override
-      public void onClick(View v) {
-        Intent it = new Intent(MainActivity.this, CreatePostActivity.class);
-        startActivity(it);
-      }
-    });
-  }
-
-  private void postListListener() {
-    FirebaseFirestore fs = FirebaseFirestore.getInstance();
-    FirebaseAuth fa = FirebaseAuth.getInstance();
-    FirebaseUser us = fa.getCurrentUser();
-    if (us != null) {
-      Picasso.get().load(us.getPhotoUrl()).into(this.imgPostCreateBoxLabelAvatar);
-    }
-
-    fs.collection("posts").orderBy("created_at", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-      @Override
-      public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-
-        if (error != null) {
-          return;
+      public void onItemSelected(int i) {
+        Fragment f = null;
+        switch (i) {
+          case R.id.fragmentNewFeesNavItem:
+            f = new NewsFeedFragment();
+            break;
+          case R.id.fragmentMessageNavItem:
+            f = new MessageFragment();
+            break;
+          case R.id.fragmentFriendsNavItem:
+            f = new FriendsFragment();
+            break;
+          case R.id.fragmentNotifications:
+            f = new NotificationFragment();
+            break;
+          case R.id.fragmentMenuNavItem:
+            f = new MenuFragment();
+            break;
         }
 
-        ArrayList<Post> postList = new ArrayList<>();
-
-        assert value != null;
-        for (DocumentChange dc : value.getDocumentChanges()) {
-          postList.add(dc.getDocument().toObject(Post.class));
-        }
-        loadPostList(postList);
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainContainer, f).commit();
       }
     });
-  }
 
-  private void loadPostList(ArrayList<Post> list) {
-    postArrayList.addAll(list);
-    postListViewAdapter.notifyDataSetChanged();
-  }
 
+  }
 }

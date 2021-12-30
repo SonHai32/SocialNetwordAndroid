@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
-      android:id="@+id/activityNewFeesNavItem"
-      android:enabled="true"
+      android:id="@+id/fragmentNewFeesNavItem"
       android:icon="@drawable/ic_home_outline"
-      android:title="@string/NewFeeds"/>
+      android:title="@string/NewFeeds"
+      app:cnb_iconColor="@color/colorPrimary"
+       />
   <item
-      android:id="@+id/activityMessageNavItem"
-      android:enabled="true"
+      android:id="@+id/fragmentMessageNavItem"
+      app:cnb_iconColor="@color/colorPrimary"
       android:icon="@drawable/ic_mail_outline"
-      android:title="@string/Message"/>
+      android:title="@string/Message" />
   <item
-      android:id="@+id/activityFriendsNavItem"
-      android:enabled="true"
+      android:id="@+id/fragmentFriendsNavItem"
+      app:cnb_iconColor="@color/colorPrimary"
       android:icon="@drawable/ic_people_outline"
-      android:title="@string/Friends"/>
+      android:title="@string/Friends" />
   <item
-      android:id="@+id/activityNotificationsNavItem"
-      android:enabled="true"
+      android:id="@+id/fragmentNotifications"
+      app:cnb_iconColor="@color/colorPrimary"
       android:icon="@drawable/ic_notifications_outline"
-      android:title="@string/Notifications"/>
+      android:title="@string/Notifications" />
   <item
-      android:id="@+id/activityMenuNavItem"
-      android:enabled="true"
+      android:id="@+id/fragmentMenuNavItem"
+      app:cnb_iconColor="@color/colorPrimary"
       android:icon="@drawable/ic_more"
-      android:title="@string/Menu"/>
+      android:title="@string/Menu" />
 </menu>

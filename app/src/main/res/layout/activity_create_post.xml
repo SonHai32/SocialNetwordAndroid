@@ -87,10 +87,10 @@
 
   <androidx.appcompat.widget.LinearLayoutCompat
       android:id="@+id/linearLayoutCompat"
-      android:focusable="true"
-      android:focusableInTouchMode="true"
       android:layout_width="match_parent"
       android:layout_height="200dp"
+      android:focusable="true"
+      android:focusableInTouchMode="true"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -128,6 +128,7 @@
         app:singleLine="true">
 
       <com.google.android.material.chip.Chip
+          android:id="@+id/chipBtnUploadPhoto"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Photo"
@@ -140,6 +141,7 @@
           app:closeIconEnabled="false" />
 
       <com.google.android.material.chip.Chip
+          android:id="@+id/chipBtnInputHashtag"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Hashtag"
@@ -152,13 +154,51 @@
 
   </HorizontalScrollView>
 
-  <com.google.android.material.button.MaterialButton
-      android:text="@string/Post"
+  <HorizontalScrollView
+      android:id="@+id/horizontalScrollView2"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="24dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+      app:layout_constraintTop_toBottomOf="@+id/inputLayoutHashTag">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupCreatePostHashtag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipSpacingHorizontal="8dp"
+        app:singleLine="true">
+
+    </com.google.android.material.chip.ChipGroup>
+
+  </HorizontalScrollView>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnCreatePostPost"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/Post"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:visibility="gone"
+      android:id="@+id/inputLayoutHashTag"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+      >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtPostCreateInputHashtag"
+        android:hint="@string/HindInputHashtag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+  </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

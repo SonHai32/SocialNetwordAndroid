@@ -3,6 +3,7 @@ package com.hailam32.doanmangxahoi.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
@@ -105,5 +106,17 @@ public class NewsFeedFragment extends Fragment {
   private void loadPostList(ArrayList<Post> list) {
     postArrayList.addAll(list);
     postListViewAdapter.notifyDataSetChanged();
+  }
+
+  @Override
+  public void onSaveInstanceState(@NonNull Bundle outState) {
+    super.onSaveInstanceState(outState);
+    postListListener();
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    postListListener();
   }
 }

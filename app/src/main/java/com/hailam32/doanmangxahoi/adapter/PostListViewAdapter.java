@@ -104,11 +104,13 @@ public class PostListViewAdapter extends ArrayAdapter<Post> {
     else{
       chipGroupPost.setVisibility(View.GONE);
     }
-    System.out.println(chipGroupPost.toString() + chipGroupPost.getId() + "");
 //    chipPost.setVisibility(View.GONE);
     if (postContent != null) {
       if (postContent.getImage_content() != null && !postContent.getImage_content().isEmpty()) {
         Picasso.get().load(postContent.getImage_content().get(0).getSrc()).into(this.imgPostImageContent);
+      }
+      else{
+        this.imgPostImageContent.setVisibility(View.GONE);
       }
       if (postContent.getText_content() != null) {
         this.txtPostTextContent.setText(postContent.getText_content());

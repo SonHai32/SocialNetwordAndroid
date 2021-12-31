@@ -119,4 +119,10 @@ public class NewsFeedFragment extends Fragment {
     super.onStop();
     postListListener();
   }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    postListListener();
+  }
 }

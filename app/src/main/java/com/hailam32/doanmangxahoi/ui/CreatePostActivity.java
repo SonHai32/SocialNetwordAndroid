@@ -260,10 +260,10 @@ public class CreatePostActivity extends AppCompatActivity {
       public void onComplete(@NonNull Task<DocumentReference> task) {
         if (task.isComplete()) {
           Log.v("POST", "Complete");
-          toggleUi(true);
+          finish();
         } else if (task.isSuccessful()) {
           Log.v("POST", "Success");
-          toggleUi(true);
+          finish();
         }
         else {
           toggleUi(true);

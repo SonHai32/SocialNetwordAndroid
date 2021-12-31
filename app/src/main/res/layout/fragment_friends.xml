@@ -1,14 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.FriendsFragment">
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="@string/hello_blank_fragment" />
+      android:background="@color/white"
+      android:padding="10dp">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexboxLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:alignItems="center"
+        app:justifyContent="space_between"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <ImageButton
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@color/transparency"
+          android:focusableInTouchMode="true"
+          android:src="@drawable/ic_arrow_back_gray" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="32dp"
+          android:text="@string/Friends"
+          android:textSize="20sp"
+          android:textStyle="bold" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexboxLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout">
+
+      <HorizontalScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/friendFragmentChipGroup"
+            style="@style/Widget.MaterialComponents.ChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/friendFragmentChipFriendList"
+              style="@style/Widget.MaterialComponents.Chip.Choice"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="true"
+              android:text="@string/Friends"
+              app:chipEndPadding="8dp"
+              app:chipIcon="@drawable/ic_people_outline"
+              app:chipIconEnabled="true"
+              app:chipIconTint="@color/colorPrimary"
+              app:chipStartPadding="8dp" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/friendFragmentChipFriendRequest"
+              style="@style/Widget.MaterialComponents.Chip.Choice"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/FriendRequestTabTitle"
+              app:chipEndPadding="8dp"
+              app:chipIcon="@drawable/ic_friend_add_outline_gray"
+              app:chipIconEnabled="true"
+              app:chipIconTint="@color/colorPrimary"
+              app:chipStartPadding="8dp" />
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/friendFragmentChipFriendSuggest"
+              style="@style/Widget.MaterialComponents.Chip.Choice"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/FriendSuggestTabTitle"
+              app:checkedIconTint="@color/white"
+              app:chipEndPadding="8dp"
+              app:chipIcon="@drawable/ic_light_outline"
+              app:chipIconEnabled="true"
+              app:chipIconTint="@color/colorPrimary"
+              app:chipStartPadding="8dp" />
+        </com.google.android.material.chip.ChipGroup>
+      </HorizontalScrollView>
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout2">
+
+      <com.google.android.material.textfield.TextInputLayout
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:startIconDrawable="@drawable/ic_search_gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/friendFragmentTxtSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/HindSearch"
+            android:textColor="@color/colorText" />
+      </com.google.android.material.textfield.TextInputLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/friendFragmentMainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2">
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--    <com.google.android.material.tabs.TabLayout-->
+    <!--        android:id="@+id/friendFragmentTabLayout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--      <com.google.android.material.tabs.TabItem-->
+    <!--          android:id="@+id/friendFragmentTabFriendList"-->
+    <!--          android:layout_width="wrap_content"-->
+    <!--          android:layout_height="wrap_content"-->
+    <!--          android:text="@string/FriendsTabTitle" />-->
+
+    <!--      <com.google.android.material.tabs.TabItem-->
+    <!--          android:id="@+id/friendFragmentTabFriendRequest"-->
+    <!--          android:layout_width="wrap_content"-->
+    <!--          android:layout_height="wrap_content"-->
+    <!--          android:text="@string/FriendRequestTabTitle" />-->
+
+    <!--      <com.google.android.material.tabs.TabItem-->
+    <!--          android:id="@+id/friendFragmentTabFriendSuggest"-->
+    <!--          android:layout_width="wrap_content"-->
+    <!--          android:layout_height="wrap_content"-->
+    <!--          android:text="@string/FriendSuggestTabTitle" />-->
+    <!--    </com.google.android.material.tabs.TabLayout>-->
+
+    <!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+    <!--        android:id="@+id/friendFragmentMainContainer"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/friendFragmentTabLayout">-->
+
+    <!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

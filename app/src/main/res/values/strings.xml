@@ -44,4 +44,12 @@
   <!--  PostCreate-->
 
 
+  <!--  FriendFragment-->
+  <string name="FriendsTabTitle">Friends</string>
+  <string name="FriendRequestTabTitle">Request</string>
+  <string name="FriendSuggestTabTitle">Suggest</string>
+  <string name="HindSearch">Friends Search</string>
+
+  <!--  FriendFragment-->
+
 </resources>

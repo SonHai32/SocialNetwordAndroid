@@ -50,7 +50,6 @@ public class PostListViewAdapter extends ArrayAdapter<Post> {
     this.postList = postList;
     this.context = context;
     this.resource = resource;
-    System.out.println(postList);
   }
 
   @Override

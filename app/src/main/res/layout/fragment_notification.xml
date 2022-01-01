@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.NotificationFragment">
+    tools:context=".ui.FriendListFragment">
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
+  <ListView
+      android:id="@+id/lvNotification"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="@string/hello_blank_fragment" />
+      android:divider="@color/transparency" />
 
 </FrameLayout>

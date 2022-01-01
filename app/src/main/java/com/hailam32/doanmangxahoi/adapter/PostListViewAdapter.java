@@ -22,6 +22,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.hailam32.doanmangxahoi.R;
 import com.hailam32.doanmangxahoi.models.post.Post;
 import com.hailam32.doanmangxahoi.models.post.PostContent;
+import com.hailam32.doanmangxahoi.utils.DateToRelativeTime;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -78,8 +79,8 @@ public class PostListViewAdapter extends ArrayAdapter<Post> {
   private void setUIData(Post p) {
     Picasso.get().load(p.getAvatar_url()).into(this.imgAvatar);
     this.txtUsername.setText(p.getCreate_by_username());
-    this.txtTime.setText(
-            DateUtils.getRelativeTimeSpanString(p.getCreated_at().toDate().getTime(), System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
+    this.txtTime.setText(DateToRelativeTime.getRelativeTime(p.getCreated_at().toDate()));
+
     PostContent postContent = p.getPost_content();
     List<String> postTags = postContent.getHashtag();
     ArrayList<View> listTag = new ArrayList<>();

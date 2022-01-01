@@ -56,4 +56,9 @@
   <!--  FriendRequestCustomListView-->
 
 
+  <!--  NotificationFragment-->
+  <string name="SendFriendRequest">Send you a friend request</string>
+  <string name="SendYouMessage">Send you a message</string>
+  <!--  NotificationFragment-->
+
 </resources>

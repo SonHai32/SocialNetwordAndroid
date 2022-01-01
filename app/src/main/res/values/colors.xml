@@ -8,8 +8,9 @@
   <color name="black">#FF000000</color>
   <color name="white">#FFFFFFFF</color>
   <color name="colorPrimary">#fd70a1</color>
-<!--  <color name="colorSecondary">#F5F5F5</color>-->
-    <color name="colorSecondary">#ECEEEB</color>
+  <!--  <color name="colorSecondary">#F5F5F5</color>-->
+  <color name="colorSecondary">#ECEEEB</color>
+  <color name="colorHover">#F8F9FA</color>
   <color name="colorText">#4C607B</color>
   <color name="colorTag">#00B2FE</color>
   <color name="transparency">#00ffffff</color>

@@ -1,15 +1,20 @@
 package com.hailam32.doanmangxahoi.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.hailam32.doanmangxahoi.R;
 import com.hailam32.doanmangxahoi.models.User;
@@ -22,13 +27,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FriendListAdapter extends ArrayAdapter<User> {
   private Activity context;
-  private LayoutInflater li;
   private ArrayList<User> friendList;
   private int resource;
-
-  private CircleImageView avatar;
-  private TextView username;
-  private ImageButton messageButton;
+  private int positionSelected;
 
   public FriendListAdapter(Activity context, int resource, ArrayList<User> friendList) {
     super(context, resource, friendList);
@@ -37,29 +38,47 @@ public class FriendListAdapter extends ArrayAdapter<User> {
     this.resource = resource;
   }
 
+  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables"})
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
+
     if (convertView == null) {
       convertView = this.context.getLayoutInflater().inflate(this.resource, null);
     }
 
-    initUi(convertView);
-    setUiData((friendList.get(position)));
+    CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.friendListItemAvatar);
+    TextView username = (TextView) convertView.findViewById(R.id.friendListItemUsername);
+    ImageButton messageButton = (ImageButton) convertView.findViewById(R.id.friendListItemMessageBtn);
+    LinearLayoutCompat friendListItemMainContainer = (LinearLayoutCompat) convertView.findViewById(R.id.friendListItemMainContainer);
+    Animation fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+
+    User user;
+
+    if (this.friendList != null && !this.friendList.isEmpty()) {
+
+      user = this.friendList.get(position);
+      Picasso.get().load(user.getAvatar_url()).into(avatar);
+      username.setText(user.getDisplay_name());
+
+      friendListItemMainContainer.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          positionSelected = position;
+          notifyDataSetChanged();
+        }
+      });
+
+      if (positionSelected == position) {
+        friendListItemMainContainer.setAnimation(fadeIn);
+        friendListItemMainContainer.setBackground(convertView.getResources().getDrawable(R.drawable.rounded_hover));
+      } else {
+        friendListItemMainContainer.setBackground(null);
+      }
+
+    }
 
     return convertView;
   }
 
-  public void initUi(View v) {
-    avatar = (CircleImageView) v.findViewById(R.id.friendListItemAvatar);
-    username = (TextView) v.findViewById(R.id.friendListItemUsername);
-    messageButton = (ImageButton) v.findViewById(R.id.friendListItemMessageBtn);
-  }
-
-  private void setUiData(User u) {
-    if (u != null) {
-      Picasso.get().load(u.getAvatar_url()).into(avatar);
-      username.setText(u.getDisplayName());
-    }
-  }
 }
 

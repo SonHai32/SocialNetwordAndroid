@@ -2,6 +2,8 @@ package com.hailam32.doanmangxahoi.models;
 
 import com.google.common.base.Supplier;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.PropertyName;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -23,15 +25,21 @@ public class User {
   private String gender;
   private String place;
   private List<UserHobbies> hobbies;
-
   public List<UserHobbies> getHobbies() {
     return hobbies;
+  }
+
+  public String getDisplay_name() {
+    return display_name;
+  }
+
+  public void setDisplay_name(String display_name) {
+    this.display_name = display_name;
   }
 
   public void setHobbies(List<UserHobbies> hobbies) {
     this.hobbies = hobbies;
   }
-
 
 
   public String getId() {
@@ -48,14 +56,6 @@ public class User {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public String getDisplayName() {
-    return display_name;
-  }
-
-  public void setDisplayName(String displayName) {
-    this.display_name = displayName;
   }
 
   public Timestamp getBitrhday() {

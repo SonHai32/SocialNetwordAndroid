@@ -7,6 +7,7 @@
 
 
   <ListView
+      android:divider="@color/transparency"
       android:id="@+id/lvFriendList"
       android:layout_width="match_parent"
       android:layout_height="match_parent">

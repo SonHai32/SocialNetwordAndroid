@@ -64,9 +64,12 @@ public class FriendListFragment extends Fragment {
         ArrayList<User> list = new ArrayList<>();
 
         assert value != null;
-        System.out.println();
         for (DocumentChange dc : value.getDocumentChanges()) {
-          list.add(dc.getDocument().toObject(User.class));
+          User u = dc.getDocument().toObject(User.class);
+          System.out.println(u);
+          if (u != null) {
+            list.add(u);
+          }
         }
         loadFriendList(list);
       }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/friendSuggestItemMainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true">
+
+  <com.google.android.flexbox.FlexboxLayout
+      android:layout_width="match_parent"
+      android:layout_height="80dp"
+      android:padding="10dp"
+      app:alignItems="center"
+      app:justifyContent="space_between">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:alignItems="center"
+        app:justifyContent="flex_start">
+
+      <de.hdodenhof.circleimageview.CircleImageView
+          android:id="@+id/friendSuggestItemAvatar"
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+          android:src="@drawable/ic_user"
+          app:civ_border_color="@color/transparency"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/friendSuggestItemUsername"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="12sp"
+          android:text="Username"
+          android:textColor="@color/colorText"
+          android:textStyle="bold" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <ImageButton
+        android:id="@+id/friendSuggestItemMessageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparency"
+        android:src="@drawable/ic_friend_add_outline_gray"
+        app:tint="@color/colorPrimary" />
+
+  </com.google.android.flexbox.FlexboxLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

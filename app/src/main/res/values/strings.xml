@@ -61,4 +61,10 @@
   <string name="SendYouMessage">Send you a message</string>
   <!--  NotificationFragment-->
 
+  <!--  MessageFragment-->
+  <string name="MessageTitle">Message</string>
+  <string name="SentAnImage">Sent an image</string>
+  <string name="Me">Me : </string>
+  <!--  MessageFragment-->
+
 </resources>

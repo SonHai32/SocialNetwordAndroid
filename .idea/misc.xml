@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/drawable/border_radius.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/drawable/border_top_bottom.xml" value="0.20885416666666667" />
+        <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/drawable/ic_arrow_back_gray.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/drawable/ic_comment.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/drawable/ic_home_outline.xml" value="0.14375" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/drawable/ic_more.xml" value="0.26666666666666666" />
@@ -16,16 +17,20 @@
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/activity_create_post.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/activity_message.xml" value="0.2" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/fragment_friend_list.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/fragment_friend_request.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/fragment_friend_suggest.xml" value="0.12135416666666667" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/fragment_friends.xml" value="0.264" />
+        <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/fragment_message.xml" value="0.12135416666666667" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/fragment_news_feed.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/fragment_notification.xml" value="0.2" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/friend_list_custom_listview.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/friend_request_custom_listview.xml" value="0.264" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/friend_suggest_custom_listview.xml" value="0.176" />
+        <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/message_content_list_custom_listview.xml" value="0.2" />
+        <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/message_custom_listview.xml" value="0.2" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/notification_custom_listview.xml" value="0.264" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/post_layout.xml" value="0.264" />
         <entry key="..\:/Users/lamso/AndroidStudioProjects/DoAnMangXaHoi/app/src/main/res/layout/progress_btn_layout.xml" value="0.25052083333333336" />

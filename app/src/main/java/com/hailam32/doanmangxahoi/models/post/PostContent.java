@@ -1,5 +1,7 @@
 package com.hailam32.doanmangxahoi.models.post;
 
+import com.hailam32.doanmangxahoi.models.ImageContent;
+
 import java.util.List;
 
 public class PostContent {

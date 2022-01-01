@@ -39,7 +39,6 @@
   <string name="Post">Post</string>
   <string name="AddHashtag">Add new hashtag</string>
   <string name="HindInputHashtag">Type text and enter to add your hashtag</string>
-  <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <!--  PostCreate-->
 
@@ -49,7 +48,12 @@
   <string name="FriendRequestTabTitle">Request</string>
   <string name="FriendSuggestTabTitle">Suggest</string>
   <string name="HindSearch">Friends Search</string>
-
   <!--  FriendFragment-->
+
+  <!--  FriendRequestCustomListView-->
+  <string name="Accept">Accept</string>
+  <string name="Ignore">Ignore</string>
+  <!--  FriendRequestCustomListView-->
+
 
 </resources>

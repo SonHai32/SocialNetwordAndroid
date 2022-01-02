@@ -78,5 +78,19 @@ public class Post {
   public void setPost_content(PostContent post_content) {
     this.post_content = post_content;
   }
+
+  @Override
+  public String toString() {
+    return "Post{" +
+            "id='" + id + '\'' +
+            ", create_by_username='" + create_by_username + '\'' +
+            ", avatar_url='" + avatar_url + '\'' +
+            ", created_at=" + created_at +
+            ", created_by_id='" + created_by_id + '\'' +
+            ", liked_by_user_id=" + liked_by_user_id +
+            ", post_content=" + post_content +
+            ", commentID='" + commentID + '\'' +
+            '}';
+  }
 }
 

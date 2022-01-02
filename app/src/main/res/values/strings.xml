@@ -67,4 +67,12 @@
   <string name="Me">Me : </string>
   <!--  MessageFragment-->
 
+
+  <!--  PostContent-->
+
+  <string name="Like">Like</string>
+  <string name="Comment">Comment</string>
+  <string name="Share">Share</string>
+  <!--  PostContent-->
+
 </resources>

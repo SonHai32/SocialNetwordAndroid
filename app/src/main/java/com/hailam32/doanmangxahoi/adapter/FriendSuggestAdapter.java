@@ -2,6 +2,8 @@ package com.hailam32.doanmangxahoi.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -29,18 +31,24 @@ public class FriendSuggestAdapter extends ArrayAdapter<User> {
     this.resource = resource;
   }
 
-  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables"})
+  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables", "ViewHolder"})
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
 
+    LayoutInflater inflater = (LayoutInflater) context
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View gridView;
     if (convertView == null) {
-      convertView = this.context.getLayoutInflater().inflate(this.resource, null);
+      gridView = new View(context);
+    } else {
+      gridView = (View) convertView;
     }
+    gridView = inflater.inflate(resource, null);
 
-    CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.friendSuggestItemAvatar);
-    TextView username = (TextView) convertView.findViewById(R.id.friendSuggestItemUsername);
-    ImageButton addFriendBtn = (ImageButton) convertView.findViewById(R.id.friendSuggestItemMessageBtn);
-    LinearLayoutCompat friendSuggestItemMainContainer = (LinearLayoutCompat) convertView.findViewById(R.id.friendSuggestItemMainContainer);
+    CircleImageView avatar = (CircleImageView) gridView.findViewById(R.id.friendSuggestItemAvatar);
+    TextView username = (TextView) gridView.findViewById(R.id.friendSuggestItemUsername);
+    ImageButton addFriendBtn = (ImageButton) gridView.findViewById(R.id.friendSuggestItemMessageBtn);
+    LinearLayoutCompat friendSuggestItemMainContainer = (LinearLayoutCompat) gridView.findViewById(R.id.friendSuggestItemMainContainer);
     Animation fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
     User user;
@@ -61,14 +69,14 @@ public class FriendSuggestAdapter extends ArrayAdapter<User> {
 
       if (positionSelected == position) {
         friendSuggestItemMainContainer.setAnimation(fadeIn);
-        friendSuggestItemMainContainer.setBackground(convertView.getResources().getDrawable(R.drawable.rounded_hover));
+        friendSuggestItemMainContainer.setBackground(gridView.getResources().getDrawable(R.drawable.rounded_hover));
       } else {
         friendSuggestItemMainContainer.setBackground(null);
       }
 
     }
 
-    return convertView;
+    return gridView;
   }
 
 }

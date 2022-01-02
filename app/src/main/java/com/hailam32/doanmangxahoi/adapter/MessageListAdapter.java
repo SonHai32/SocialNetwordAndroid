@@ -2,17 +2,17 @@ package com.hailam32.doanmangxahoi.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -27,9 +27,7 @@ import com.hailam32.doanmangxahoi.models.Message;
 import com.hailam32.doanmangxahoi.models.User;
 import com.hailam32.doanmangxahoi.ui.MessageActivity;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageListAdapter extends ArrayAdapter<String> {
@@ -45,18 +43,24 @@ public class MessageListAdapter extends ArrayAdapter<String> {
     this.resource = resource;
   }
 
-  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables"})
+  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables", "ViewHolder"})
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
 
+    LayoutInflater inflater = (LayoutInflater) context
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View gridView;
     if (convertView == null) {
-      convertView = this.context.getLayoutInflater().inflate(this.resource, null);
+      gridView = new View(context);
+    } else {
+      gridView = (View) convertView;
     }
+    gridView = inflater.inflate(resource, null);
 
-    CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.messageListItemAvatar);
-    TextView username = (TextView) convertView.findViewById(R.id.messageListItemUsername);
-    TextView lastMessage = (TextView) convertView.findViewById(R.id.messageListItemLastMessage);
-    LinearLayoutCompat messageListItemMainContainer = (LinearLayoutCompat) convertView.findViewById(R.id.messageListItemMainContainer);
+    CircleImageView avatar = (CircleImageView) gridView.findViewById(R.id.messageListItemAvatar);
+    TextView username = (TextView) gridView.findViewById(R.id.messageListItemUsername);
+    TextView lastMessage = (TextView) gridView.findViewById(R.id.messageListItemLastMessage);
+    LinearLayoutCompat messageListItemMainContainer = (LinearLayoutCompat) gridView.findViewById(R.id.messageListItemMainContainer);
     Animation fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
     String id = null;
@@ -128,17 +132,15 @@ public class MessageListAdapter extends ArrayAdapter<String> {
       });
     }
 
-
     if (positionSelected == position) {
       messageListItemMainContainer.setAnimation(fadeIn);
-      messageListItemMainContainer.setBackground(convertView.getResources().getDrawable(R.drawable.rounded_hover));
+      messageListItemMainContainer.setBackground(gridView.getResources().getDrawable(R.drawable.rounded_hover));
 
     } else {
       messageListItemMainContainer.setBackground(null);
     }
 
-    return convertView;
-
+    return gridView;
   }
 
 }

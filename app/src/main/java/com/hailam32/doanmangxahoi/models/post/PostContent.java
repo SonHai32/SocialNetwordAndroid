@@ -33,4 +33,13 @@ public class PostContent {
   }
 
   private List<String> hashtag;
+
+  @Override
+  public String toString() {
+    return "PostContent{" +
+            "text_content='" + text_content + '\'' +
+            ", image_content=" + image_content +
+            ", hashtag=" + hashtag +
+            '}';
+  }
 }

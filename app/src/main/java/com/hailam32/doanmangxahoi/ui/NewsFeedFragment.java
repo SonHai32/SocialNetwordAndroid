@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,17 +15,14 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.hailam32.doanmangxahoi.MainActivity;
 import com.hailam32.doanmangxahoi.R;
-import com.hailam32.doanmangxahoi.adapter.PostListViewAdapter;
+import com.hailam32.doanmangxahoi.adapter.PostAdapter;
 import com.hailam32.doanmangxahoi.models.post.Post;
-import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -36,7 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NewsFeedFragment extends Fragment {
   private ListView listViewPost;
-  private PostListViewAdapter postListViewAdapter;
+  private PostAdapter postListViewAdapter;
   private CircleImageView imgPostCreateBoxLabelAvatar;
   private TextView tvOpenCreatePost;
   private ArrayList<Post> postArrayList = new ArrayList<Post>();
@@ -57,7 +53,7 @@ public class NewsFeedFragment extends Fragment {
     listViewPost = (ListView) v.findViewById(R.id.listViewPost);
     tvOpenCreatePost = (TextView) v.findViewById(R.id.tvOpenCreatePost);
 
-    postListViewAdapter = new PostListViewAdapter(getActivity(), R.layout.post_layout, this.postArrayList);
+    postListViewAdapter = new PostAdapter(getActivity(), R.layout.post_layout, this.postArrayList);
     listViewPost.setAdapter(postListViewAdapter);
     imgPostCreateBoxLabelAvatar = (CircleImageView) v.findViewById(R.id.imgPostCreateLabelAvatar);
 
@@ -92,13 +88,10 @@ public class NewsFeedFragment extends Fragment {
           return;
         }
 
-        ArrayList<Post> postList = new ArrayList<>();
-
+        postArrayList.clear();
         assert value != null;
-        for (DocumentChange dc : value.getDocumentChanges()) {
-          postList.add(dc.getDocument().toObject(Post.class));
-        }
-        loadPostList(postList);
+        postArrayList.addAll((ArrayList<Post>) value.toObjects(Post.class));
+        postListViewAdapter.notifyDataSetChanged();
       }
     });
   }

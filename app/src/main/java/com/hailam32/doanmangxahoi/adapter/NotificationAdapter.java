@@ -2,6 +2,8 @@ package com.hailam32.doanmangxahoi.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -9,18 +11,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.widget.LinearLayoutCompat;
-
 import com.hailam32.doanmangxahoi.R;
 import com.hailam32.doanmangxahoi.enums.NotificationEnum;
 import com.hailam32.doanmangxahoi.models.Notification;
-import com.hailam32.doanmangxahoi.models.User;
 import com.hailam32.doanmangxahoi.utils.DateToRelativeTime;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NotificationAdapter extends ArrayAdapter<Notification> {
@@ -36,20 +33,26 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
     this.resource = resource;
   }
 
-  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables"})
+  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables", "ViewHolder"})
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
 
+    LayoutInflater inflater = (LayoutInflater) context
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View gridView;
     if (convertView == null) {
-      convertView = this.context.getLayoutInflater().inflate(this.resource, null);
+      gridView = new View(context);
+    } else {
+      gridView = (View) convertView;
     }
+    gridView = inflater.inflate(resource, null);
 
-    CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.notificationItemAvatar);
-    TextView username = (TextView) convertView.findViewById(R.id.notificationItemUsername);
-    TextView title = (TextView) convertView.findViewById(R.id.notificationItemTitle);
-    TextView time = (TextView) convertView.findViewById(R.id.notificationItemTime);
-    ImageView status = (ImageView) convertView.findViewById(R.id.notificationItemStatus);
-    LinearLayoutCompat notificationItemMainContainer = (LinearLayoutCompat) convertView.findViewById(R.id.notificationItemMainContainer);
+    CircleImageView avatar = (CircleImageView) gridView.findViewById(R.id.notificationItemAvatar);
+    TextView username = (TextView) gridView.findViewById(R.id.notificationItemUsername);
+    TextView title = (TextView) gridView.findViewById(R.id.notificationItemTitle);
+    TextView time = (TextView) gridView.findViewById(R.id.notificationItemTime);
+    ImageView status = (ImageView) gridView.findViewById(R.id.notificationItemStatus);
+    LinearLayoutCompat notificationItemMainContainer = (LinearLayoutCompat) gridView.findViewById(R.id.notificationItemMainContainer);
     Animation fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
     Notification notification;
@@ -61,9 +64,9 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
       username.setText(notification.getByUser().getDisplay_name());
       time.setText(DateToRelativeTime.getRelativeTime(notification.getCreated_at().toDate()));
       if (notification.getType() == NotificationEnum.message)
-        title.setText(convertView.getResources().getText(R.string.SendFriendRequest));
+        title.setText(gridView.getResources().getText(R.string.SendFriendRequest));
       else
-        title.setText(convertView.getResources().getText(R.string.SendYouMessage));
+        title.setText(gridView.getResources().getText(R.string.SendYouMessage));
       if (notification.isSeen())
         status.setVisibility(View.GONE);
 
@@ -78,13 +81,13 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
 
       if (positionSelected == position) {
         notificationItemMainContainer.setAnimation(fadeIn);
-        notificationItemMainContainer.setBackground(convertView.getResources().getDrawable(R.drawable.rounded_hover));
+        notificationItemMainContainer.setBackground(gridView.getResources().getDrawable(R.drawable.rounded_hover));
       } else {
         notificationItemMainContainer.setBackground(null);
       }
     }
 
-    return convertView;
+    return gridView;
   }
 
 }

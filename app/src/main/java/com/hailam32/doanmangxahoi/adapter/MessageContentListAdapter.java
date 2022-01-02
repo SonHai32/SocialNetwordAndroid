@@ -2,16 +2,12 @@ package com.hailam32.doanmangxahoi.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
-import androidx.appcompat.widget.LinearLayoutCompat;
-
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,9 +18,7 @@ import com.hailam32.doanmangxahoi.R;
 import com.hailam32.doanmangxahoi.models.Message;
 import com.hailam32.doanmangxahoi.models.User;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageContentListAdapter extends ArrayAdapter<Message> {
@@ -40,19 +34,25 @@ public class MessageContentListAdapter extends ArrayAdapter<Message> {
     this.resource = resource;
   }
 
-  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables"})
+  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables", "ViewHolder"})
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
 
+    LayoutInflater inflater = (LayoutInflater) context
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View gridView;
     if (convertView == null) {
-      convertView = this.context.getLayoutInflater().inflate(this.resource, null);
+      gridView = new View(context);
+    } else {
+      gridView = (View) convertView;
     }
+    gridView = inflater.inflate(resource, null);
 
-    CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.messageContentFriendMessageAvatar);
-    FlexboxLayout friendMessageContainer = (FlexboxLayout) convertView.findViewById(R.id.flexboxFriendMessageTextContent);
-    FlexboxLayout selfMessageContainer = (FlexboxLayout) convertView.findViewById(R.id.flexboxSelfMessageTextContent);
-    TextView txtFriendMessageTextContent = (TextView) convertView.findViewById(R.id.txtFriendMessageTextContent);
-    TextView txtSelfMessageTextContent = (TextView) convertView.findViewById(R.id.txtSelfMessageTextContent);
+    CircleImageView avatar = (CircleImageView) gridView.findViewById(R.id.messageContentFriendMessageAvatar);
+    FlexboxLayout friendMessageContainer = (FlexboxLayout) gridView.findViewById(R.id.flexboxFriendMessageTextContent);
+    FlexboxLayout selfMessageContainer = (FlexboxLayout) gridView.findViewById(R.id.flexboxSelfMessageTextContent);
+    TextView txtFriendMessageTextContent = (TextView) gridView.findViewById(R.id.txtFriendMessageTextContent);
+    TextView txtSelfMessageTextContent = (TextView) gridView.findViewById(R.id.txtSelfMessageTextContent);
 
     selfMessageContainer.setVisibility(View.GONE);
     friendMessageContainer.setVisibility(View.GONE);
@@ -90,7 +90,7 @@ public class MessageContentListAdapter extends ArrayAdapter<Message> {
 
     }
 
-    return convertView;
+    return gridView;
   }
 
 }

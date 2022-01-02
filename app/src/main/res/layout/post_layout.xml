@@ -78,33 +78,19 @@
         android:layout_height="wrap_content"
         app:chipSpacingHorizontal="5dp"
         app:chipSpacingVertical="5dp">
-
-<!--      <com.google.android.material.chip.Chip-->
-<!--          android:id="@+id/chipPost"-->
-<!--          android:layout_width="wrap_content"-->
-<!--          android:layout_height="wrap_content"-->
-<!--          android:checkable="false"-->
-<!--          android:text="tag "-->
-<!--          android:textColor="@color/white"-->
-<!--          app:chipBackgroundColor="@color/colorTag"-->
-<!--          app:chipIcon="@drawable/ic_label_outline_white"-->
-<!--          app:closeIconEnabled="false" />-->
     </com.google.android.material.chip.ChipGroup>
 
     <TextView
         android:id="@+id/txtPostTextContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:paddingVertical="2dp"
-        android:text="Text Content"
         android:textColor="@color/colorText"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
     <ImageView
         android:id="@+id/imgPostImageContent"
         android:layout_width="match_parent"
-        android:layout_height="320dp" />
+        android:layout_height="wrap_content" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
@@ -118,7 +104,7 @@
           style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Yêu thích"
+          android:text="@string/Like"
           app:icon="@drawable/ic_love"
           tools:ignore="SmallSp" />
 
@@ -127,7 +113,7 @@
           style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Bình luận"
+          android:text="@string/Comment"
           app:icon="@drawable/ic_comment"
           tools:ignore="SmallSp" />
 
@@ -136,8 +122,9 @@
           style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Chia sẻ"
-          app:icon="@drawable/ic_share" />
+          android:text="@string/Share"
+          app:icon="@drawable/ic_share"
+          tools:ignore="HardcodedText,SmallSp" />
     </com.google.android.flexbox.FlexboxLayout>
 
   </androidx.appcompat.widget.LinearLayoutCompat>

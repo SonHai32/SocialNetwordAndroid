@@ -152,6 +152,38 @@ public class MessageActivity extends AppCompatActivity {
                         }
                       }
                     });
+            FirebaseFirestore
+                    .getInstance()
+                    .collection("users")
+                    .document(curentUserId)
+                    .collection("messages")
+                    .document(friendId).set(friend)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                      @Override
+                      public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isComplete()) {
+                          FirebaseFirestore
+                                  .getInstance()
+                                  .collection("users")
+                                  .document(friendId)
+                                  .collection("messages")
+                                  .document(curentUserId).collection("message_content")
+                                  .add(message).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                              if (task.isComplete()) {
+                                txtInputMessage.setText("");
+                                return;
+                              }
+                              if (task.isCanceled()) {
+                                Toast t = Toast.makeText(MessageActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG);
+                                t.show();
+                              }
+                            }
+                          });
+                        }
+                      }
+                    });
           }
         }
       });

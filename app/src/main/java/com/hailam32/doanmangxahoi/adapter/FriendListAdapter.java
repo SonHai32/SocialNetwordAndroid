@@ -2,8 +2,8 @@ package com.hailam32.doanmangxahoi.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +12,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
-
 import com.hailam32.doanmangxahoi.R;
 import com.hailam32.doanmangxahoi.models.User;
-import com.hailam32.doanmangxahoi.models.post.Post;
 import com.hailam32.doanmangxahoi.ui.MessageActivity;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FriendListAdapter extends ArrayAdapter<User> {
@@ -40,18 +33,24 @@ public class FriendListAdapter extends ArrayAdapter<User> {
     this.resource = resource;
   }
 
-  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables"})
+  @SuppressLint({"ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables", "ViewHolder"})
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
 
+    LayoutInflater inflater = (LayoutInflater) context
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View gridView;
     if (convertView == null) {
-      convertView = this.context.getLayoutInflater().inflate(this.resource, null);
+      gridView = new View(context);
+    } else {
+      gridView = (View) convertView;
     }
+    gridView = inflater.inflate(resource, null);
 
-    CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.friendListItemAvatar);
-    TextView username = (TextView) convertView.findViewById(R.id.friendListItemUsername);
-    ImageButton messageButton = (ImageButton) convertView.findViewById(R.id.friendListItemMessageBtn);
-    LinearLayoutCompat friendListItemMainContainer = (LinearLayoutCompat) convertView.findViewById(R.id.friendListItemMainContainer);
+    CircleImageView avatar = (CircleImageView) gridView.findViewById(R.id.friendListItemAvatar);
+    TextView username = (TextView) gridView.findViewById(R.id.friendListItemUsername);
+    ImageButton messageButton = (ImageButton) gridView.findViewById(R.id.friendListItemMessageBtn);
+    LinearLayoutCompat friendListItemMainContainer = (LinearLayoutCompat) gridView.findViewById(R.id.friendListItemMainContainer);
     Animation fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
     User user = null;
@@ -72,7 +71,7 @@ public class FriendListAdapter extends ArrayAdapter<User> {
 
       if (positionSelected == position) {
         friendListItemMainContainer.setAnimation(fadeIn);
-        friendListItemMainContainer.setBackground(convertView.getResources().getDrawable(R.drawable.rounded_hover));
+        friendListItemMainContainer.setBackground(gridView.getResources().getDrawable(R.drawable.rounded_hover));
       } else {
         friendListItemMainContainer.setBackground(null);
       }
@@ -89,8 +88,7 @@ public class FriendListAdapter extends ArrayAdapter<User> {
       }
     });
 
-
-    return convertView;
+    return gridView;
   }
 
 }

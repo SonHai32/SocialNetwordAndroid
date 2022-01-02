@@ -65,9 +65,8 @@ public class MessageFragment extends Fragment {
         assert value != null;
         for (DocumentChange dc : value.getDocumentChanges()) {
           String id = dc.getDocument().getId();
-          if (id != null) {
+          System.out.println(id);
             list.add(id);
-          }
         }
         loadMessage(list);
       }

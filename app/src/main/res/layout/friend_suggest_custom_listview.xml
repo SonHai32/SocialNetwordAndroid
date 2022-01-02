@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:background="@color/transparency"
         android:src="@drawable/ic_friend_add_outline_gray"
-        app:tint="@color/colorPrimary" />
+        app:tint="@color/colorSecondary" />
 
   </com.google.android.flexbox.FlexboxLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -88,16 +88,21 @@ public class MessageListAdapter extends ArrayAdapter<String> {
                       public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         Message message = queryDocumentSnapshots.getDocuments().get(0).toObject(Message.class);
                         if (message != null) {
-                          String text = "";
-                          if (message.getSendByID() != null && message.getSendByID() != currentUser.getUid()) {
-                            if (message.getTextMessage() != null && message.getTextMessage() != "") {
-                              lastMessage.setText(message.getTextMessage());
+                          if (!message.getSendByID().equals(currentUser.getUid())) {
+                            if (message.getTextMessage() != null && !message.getTextMessage().equals("")) {
+                              String s = message.getTextMessage();
+                              if (s.length() > 8)
+                                s = s.substring(0, 8) + "...";
+                              lastMessage.setText(s);
                             } else {
                               lastMessage.setText(context.getResources().getString(R.string.SentAnImage));
                             }
                           } else {
-                            if (message.getTextMessage() != null && message.getTextMessage() != "") {
-                              lastMessage.setText(context.getResources().getString(R.string.Me) + message.getTextMessage());
+                            if (message.getTextMessage() != null && !message.getTextMessage().equals("")) {
+                              String s = message.getTextMessage();
+                              if (s.length() > 8)
+                                s = s.substring(0, 8) + "...";
+                              lastMessage.setText(context.getResources().getString(R.string.Me) + s);
                             } else {
                               lastMessage.setText(context.getResources().getString(R.string.Me) + context.getResources().getString(R.string.SentAnImage));
                             }

@@ -33,6 +33,10 @@ import com.hailam32.doanmangxahoi.models.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,7 +51,7 @@ public class MessageActivity extends AppCompatActivity {
   private TextView friendUsername;
   private TextInputEditText txtInputMessage;
   private ImageButton btnSendMessage;
-
+  private User friend = null;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -73,6 +77,7 @@ public class MessageActivity extends AppCompatActivity {
         @Override
         public void onSuccess(DocumentSnapshot documentSnapshot) {
           User us = documentSnapshot.toObject(User.class);
+          friend = us;
           if (us != null) {
             Picasso.get().load(us.getAvatar_url()).into(friendAvatar);
             friendUsername.setText(us.getDisplay_name());
@@ -105,8 +110,6 @@ public class MessageActivity extends AppCompatActivity {
   }
 
   private void initEvent() {
-    System.out.println(curentUserId);
-    System.out.println(friendId);
     if (curentUserId != null && friendId != null) {
       btnSendMessage.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -122,20 +125,33 @@ public class MessageActivity extends AppCompatActivity {
                     .collection("users")
                     .document(curentUserId)
                     .collection("messages")
-                    .document(friendId).collection("message_content")
-                    .add(message).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-              @Override
-              public void onComplete(@NonNull Task<DocumentReference> task) {
-                if (task.isComplete()) {
-                  txtInputMessage.setText("");
-                  return;
-                }
-                if (task.isCanceled()) {
-                  Toast t = Toast.makeText(MessageActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG);
-                  t.show();
-                }
-              }
-            });
+                    .document(friendId).set(friend)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                      @Override
+                      public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isComplete()) {
+                          FirebaseFirestore
+                                  .getInstance()
+                                  .collection("users")
+                                  .document(curentUserId)
+                                  .collection("messages")
+                                  .document(friendId).collection("message_content")
+                                  .add(message).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                              if (task.isComplete()) {
+                                txtInputMessage.setText("");
+                                return;
+                              }
+                              if (task.isCanceled()) {
+                                Toast t = Toast.makeText(MessageActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG);
+                                t.show();
+                              }
+                            }
+                          });
+                        }
+                      }
+                    });
           }
         }
       });

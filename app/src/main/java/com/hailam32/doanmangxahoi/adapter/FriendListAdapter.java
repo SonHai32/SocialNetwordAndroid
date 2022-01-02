@@ -2,6 +2,7 @@ package com.hailam32.doanmangxahoi.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import com.hailam32.doanmangxahoi.R;
 import com.hailam32.doanmangxahoi.models.User;
 import com.hailam32.doanmangxahoi.models.post.Post;
+import com.hailam32.doanmangxahoi.ui.MessageActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -52,7 +54,7 @@ public class FriendListAdapter extends ArrayAdapter<User> {
     LinearLayoutCompat friendListItemMainContainer = (LinearLayoutCompat) convertView.findViewById(R.id.friendListItemMainContainer);
     Animation fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
-    User user;
+    User user = null;
 
     if (this.friendList != null && !this.friendList.isEmpty()) {
 
@@ -76,6 +78,17 @@ public class FriendListAdapter extends ArrayAdapter<User> {
       }
 
     }
+
+    User finalUser = user;
+    messageButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent it = new Intent(getContext(), MessageActivity.class);
+        it.putExtra("friendId", finalUser.getId());
+        getContext().startActivity(it);
+      }
+    });
+
 
     return convertView;
   }
